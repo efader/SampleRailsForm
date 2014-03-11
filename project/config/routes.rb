@@ -1,4 +1,12 @@
 Project::Application.routes.draw do
+  resources :items do
+    collection do
+      get 'search'
+    end
+  end
+
+  get '/items/seach' => 'items#search'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
