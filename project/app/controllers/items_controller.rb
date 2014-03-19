@@ -8,7 +8,10 @@ class ItemsController < ApplicationController
   end
 
   def search
-   @items = Item.all
+   @birds = []
+   Bird.all.each do |birdtype|
+    @birds << birdtype.title.capitalize
+   end
   end
 
   # GET /items/1
