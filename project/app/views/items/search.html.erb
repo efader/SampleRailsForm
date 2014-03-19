@@ -1,0 +1,18 @@
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:qname, "Name:") %>
+  <br />
+  <%= text_field_tag(:qname) %>
+  <br />
+  <br />
+  <%= label_tag(:qdesc, "Description:") %>
+  <br />
+  <%= text_field_tag(:qdesc) %>
+  <br />
+  <br />
+  <%= label_tag :qtype, "Type:" %>
+  <br />
+  <%= text_field_tag :qtype %>
+  <br />
+  <br />
+  <%= submit_tag "Search", :class => "btn btn-primary"%>
+<% end %>
