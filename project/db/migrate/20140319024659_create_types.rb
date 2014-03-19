@@ -1,6 +1,6 @@
 class CreateTypes < ActiveRecord::Migration
   def change
-    create_table :types do |t|
+    create_table :birds do |t|
       t.string :title
       t.string :description
 

@@ -3,7 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string :title
       t.text :description
-      t.string :type
+      t.string :bird_id
       t.text :owner
 
       t.timestamps

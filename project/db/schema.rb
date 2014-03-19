@@ -13,17 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20140319024659) do
 
-  create_table "items", force: true do |t|
+  create_table "birds", force: true do |t|
     t.string   "title"
-    t.text     "description"
-    t.string   "type"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "types", force: true do |t|
+  create_table "items", force: true do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description"
+    t.string   "bird_id"
+    t.text     "owner"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

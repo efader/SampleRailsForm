@@ -5,7 +5,7 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Type</th>
+      <th>Bird Type</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= item.title %></td>
         <td><%= item.description %></td>
-        <td><%= item.type %></td>
+        <td><%= item.bird_id %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
