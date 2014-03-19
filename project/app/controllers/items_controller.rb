@@ -8,10 +8,30 @@ class ItemsController < ApplicationController
   end
 
   def search
-   @birds = []
-   Bird.all.each do |birdtype|
-    @birds << birdtype.title.capitalize
-   end
+    @birds = []
+    Bird.all.each do |birdtype|
+      @birds << [birdtype.title.capitalize, birdtype.id]
+    end
+
+    @match = []
+    if params["andor"] == "Or"
+      @match += Item.find(:all, :conditions => {:title => params["qname"]})
+      @match += Item.find(:all, :conditions => {:description => params["qdesc"]})
+      @match += Item.find(:all, :conditions => {:bird_id => params["qtype"]})
+    elsif params["andor"] == "And"
+      @conditions = {}
+      if !params["qname"].empty?
+        @conditions[:title] = params["qname"]
+      end
+      if !params["qdesc"].empty?
+        @conditions[:description] = params["qdesc"]
+      end
+        @conditions[:bird_id] = params["qtype"]
+
+      @match = Item.find(:all, :conditions => @conditions)
+
+    end
+
   end
 
   # GET /items/1
@@ -78,4 +98,4 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:title, :description, :type)
     end
-end
+  end

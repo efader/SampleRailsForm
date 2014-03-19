@@ -8,6 +8,7 @@ Project::Application.routes.draw do
   end
 
   get '/search' => 'items#search'
+  post '/search' => 'items#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

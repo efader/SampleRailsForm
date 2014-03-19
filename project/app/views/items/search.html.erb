@@ -1,22 +1,44 @@
 <div style="width:25%;">
 
-<%= form_tag("/search", method: "get") do %>
-<%= label_tag(:qname, "Name:") %>
-<br />
-<%= text_field_tag(:qname, "" , :class => "form-control") %>
-<br />
-<br />
-<%= label_tag(:qdesc, "Description:") %>
-<br />
-<%= text_field_tag :qdesc , "" , :class => "form-control"%>
-<br />
-<br />
-<%= label_tag :qtype, "Type:" %>
-<br />
-<%= select_tag(:qtype, options_for_select(@birds), :class => "form-control") %>
-<br />
-<br />
+	<%= form_tag("/search", method: "post") do %>
+	<%= label_tag(:andor, "And / Or:") %>
+	<br />
+	<%= select_tag(:andor, options_for_select(["And","Or"]), :class => "form-control") %>
+	<br />
+	<br />
+	<%= label_tag(:qname, "Name:") %>
+	<br />
+	<%= text_field_tag(:qname, "" , :class => "form-control") %>
+	<br />
+	<br />
+	<%= label_tag(:qdesc, "Description:") %>
+	<br />
+	<%= text_field_tag :qdesc , "" , :class => "form-control"%>
+	<br />
+	<br />
+	<%= label_tag :qtype, "Type:" %>
+	<br />
+	<%= select_tag(:qtype, options_for_select(@birds), :class => "form-control") %>
+	<br />
+	<br />
 
-<%= submit_tag "Search", :class => "btn btn-primary form-control"%>
-<% end %>
+	<%= submit_tag "Search", :class => "btn btn-primary form-control"%>
+	<% end %>
 </div>
+<br /><br />
+<% if !@match.empty? %>
+<table class = "table table-striped" style="width:50%">
+	<tr>
+		<td><h3>Name</h3></td>
+		<td style="width:50px;" />
+		<td><h3>Description</h3></td>
+	</tr>
+	<% @match.each do |m| %>
+	<tr>
+		<td><%= m.title %></td>
+		<td />
+		<td><%= m.description %></td>
+	</tr>
+	<% end %>
+</table>
+<% end %>
